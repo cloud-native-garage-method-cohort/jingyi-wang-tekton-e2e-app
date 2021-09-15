@@ -1,0 +1,4 @@
+# ignore node_modules directory
+node_modules
+# ignore quay.io credentials
+tekton/wangjingyi-ibm-quay-io-credentials-secret.yml
