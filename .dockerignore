@@ -2,3 +2,5 @@
 node_modules
 # ignore quay.io credentials
 tekton/wangjingyi-ibm-quay-io-credentials-secret.yml
+# ignore git credentials
+tekton/jingyi-wang-jessie-git-credentials-secret.yaml

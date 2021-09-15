@@ -1,18 +1,18 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: buildah-pipeline-run-
+  generateName: tekton-e2e-pipeline-run-
 spec:
   pipelineRef:
-    name: buildah-pipeline
+    name: tekton-e2e-pipeline
   serviceAccountName: build-bot
   params:
     - name: app-name
-      value: express-sample-app
+      value: jingyi-wang-tekton-e2e-app
     - name: source-repo
-      value: https://github.com/cloud-native-garage-method-cohort/jingyi-wang-tekton-buildah-assignment
+      value: https://github.com/cloud-native-garage-method-cohort/jingyi-wang-tekton-e2e-app
     - name: image-repo
-      value: quay.io/wangjingyi_ibm/tekton-buildah-assignment-app
+      value: quay.io/wangjingyi_ibm/tekton-e2e-app
   workspaces:
     - name: pipeline-shared-data
       volumeClaimTemplate:
