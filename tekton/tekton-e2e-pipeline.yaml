@@ -5,6 +5,10 @@ metadata:
   name: tekton-e2e-pipeline
 spec:
   params:
+    - name: sha                                            # support new param
+      type: string
+      description: Precise SHA of the commit to build
+      default: ""
     - name: source-repo
       type: string
       description: Source code repository
@@ -21,6 +25,8 @@ spec:
       params:
         - name: url
           value: "$(params.source-repo)"
+        - name: revision
+          value: "$(params.sha)"                           # use new param
       taskRef:
         kind: ClusterTask
         name: git-clone

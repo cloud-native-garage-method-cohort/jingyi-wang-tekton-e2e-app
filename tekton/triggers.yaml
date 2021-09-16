@@ -47,6 +47,11 @@ kind: TriggerTemplate
 metadata:
   name: vcs-trigger
 spec:
+  params:
+    - name: source-repo
+      description: Source code repository
+    - name: sha
+      description: Precise SHA of the commit to build
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
@@ -57,10 +62,14 @@ spec:
           name: tekton-e2e-pipeline
         serviceAccountName: build-bot
         params:
+          - name: source-repo
+            value: $(tt.params.source-repo)  # use value from trigger event
+          - name: sha                        # introduce new param
+            value: $(tt.params.sha)          # use value from trigger event
           - name: app-name
             value: jingyi-wang-tekton-e2e-app
-          - name: source-repo
-            value: https://github.com/cloud-native-garage-method-cohort/jingyi-wang-tekton-e2e-app
+          # - name: source-repo
+          #   value: https://github.com/cloud-native-garage-method-cohort/jingyi-wang-tekton-e2e-app
           - name: image-repo
             value: quay.io/wangjingyi_ibm/tekton-e2e-app
         workspaces:
