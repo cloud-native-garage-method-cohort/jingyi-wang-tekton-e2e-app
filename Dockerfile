@@ -15,6 +15,8 @@ RUN npm ci
 # into the root of the WORKDIR
 COPY . .
 
+RUN next build
+
 # Document that this container exposes something on port 3000
 EXPOSE 3000
 
